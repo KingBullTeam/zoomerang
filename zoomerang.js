@@ -15,7 +15,8 @@
         wrapper = document.createElement('div'),
         target,
         parent,
-        placeholder
+        placeholder,
+        containter = document.createElement('div');
 
     // state
     var shown = false,
@@ -219,10 +220,17 @@
             }
 
             // insert overlay & placeholder
-            parent.appendChild(overlay)
-            parent.appendChild(wrapper)
+            window.document.body.appendChild(containter);
+            containter.appendChild(overlay);
             parent.insertBefore(placeholder, target)
-            wrapper.appendChild(target)
+            containter.appendChild(wrapper);
+            wrapper.appendChild(target);
+
+            // parent.appendChild(overlay)
+            // parent.appendChild(wrapper)
+            // parent.insertBefore(placeholder, target)
+            // wrapper.appendChild(target)
+
             overlay.style.display = 'block'
 
             // force layout
@@ -270,8 +278,10 @@
                 setStyle(target, originalStyles)
                 parent.insertBefore(target, placeholder)
                 parent.removeChild(placeholder)
-                parent.removeChild(overlay)
-                parent.removeChild(wrapper)
+                // parent.removeChild(overlay)
+                // parent.removeChild(wrapper)
+                // parent.appendChild(target);
+                window.document.body.removeChild(containter);
                 overlay.style.display = 'none'
                 placeholder = null
                 shown = false
