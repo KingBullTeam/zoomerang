@@ -294,7 +294,7 @@
             overlay.style.opacity = 0
             setStyle(target, {
                 // transform: 'translate(' + dx + 'px, ' + dy + 'px)'
-                transform: 'scale(0.1)'
+                transform: 'scale(0.5)'
             })
 
             target.addEventListener(transEndEvent, function onEnd () {
