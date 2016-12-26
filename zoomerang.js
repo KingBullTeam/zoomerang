@@ -205,6 +205,8 @@
             dx = options.width/2;
             dy = options.height/2;
 
+            console.log(width, height);
+            // top = options.maxHeight/2 - height/2;
             scale =1;
 
             placeholder = copy(target, p)
@@ -225,7 +227,7 @@
                 cursor: prefix + 'zoom-out',
                 transform: 'translate(' + dx + 'px, ' + dy + 'px)',
                 transition: ''
-            }, false)
+            }, true)
 
             // deal with % width and height
             var wPctMatch = target.style.width.match(percentageRE),
