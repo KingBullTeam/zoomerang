@@ -188,8 +188,24 @@
 
             var p     = target.getBoundingClientRect(),
                 scale = Math.min(options.maxWidth / p.width, options.maxHeight / p.height),
-                dx    = p.left - (window.innerWidth - p.width) / 2,
-                dy    = p.top - (window.innerHeight - p.height) / 2
+                dx    = p.left, //- (window.innerWidth - p.width) / 2,
+                dy    = p.top //- (window.innerHeight - p.height) / 2
+            var pe1 = options.maxWidth/ options.maxHeight
+                pe2 = p.width/p.height;
+
+            var width,height,top;
+            if(pe2 > pe1){
+              width = options.maxWidth;
+              height = width/pe2;
+            }else{
+              height = options.maxHeight;
+              width = height * pe2;
+            }
+
+            dx = options.width/2;
+            dy = options.height/2;
+
+            scale =1;
 
             placeholder = copy(target, p)
 
@@ -200,12 +216,16 @@
                 right: '',
                 bottom: '',
                 whiteSpace: 'nowrap',
-                marginTop: -p.height / 2 + 'px',
-                marginLeft: -p.width / 2 + 'px',
+                width: width + 'px',
+                height: height + 'px',
+                // marginTop: -p.height / 2 + 'px',
+                // marginLeft: -p.width / 2 + 'px',
+                marginTop: -height/2 + 'px',
+                marginLeft: -width/2 + 'px',
                 cursor: prefix + 'zoom-out',
                 transform: 'translate(' + dx + 'px, ' + dy + 'px)',
                 transition: ''
-            }, true)
+            }, false)
 
             // deal with % width and height
             var wPctMatch = target.style.width.match(percentageRE),
@@ -268,9 +288,13 @@
                 dx = p.left - (window.innerWidth - p.width) / 2,
                 dy = p.top - (window.innerHeight - p.height) / 2
 
+            dx = 0;
+            dy = 0;
+
             overlay.style.opacity = 0
             setStyle(target, {
-                transform: 'translate(' + dx + 'px, ' + dy + 'px)'
+                // transform: 'translate(' + dx + 'px, ' + dy + 'px)'
+                transform: 'scale(0.1)'
             })
 
             target.addEventListener(transEndEvent, function onEnd () {

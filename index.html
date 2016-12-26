@@ -26,7 +26,7 @@
             cursor: pointer;
         }
         img.zoom {
-            border-radius: 100%;
+            /*border-radius: 100%;*/
         }
         .gh {
             font-size: 24px;
@@ -53,10 +53,16 @@
         <p><span class="zoom">And</span></p>
         <p><span class="zoom">it</span></p>
         <p><span class="zoom">works</span></p>
+        <p>
+          <img class="zoom" src="1.png" alt="">
+        </p>
         <p><span class="zoom">even</span></p>
         <p><span class="zoom">if</span></p>
         <p><span class="zoom">you</span></p>
         <p><span class="zoom">resize</span></p>
+        <p>
+          <img class="zoom" src="2.png" alt="">
+        </p>
         <p><span class="zoom">or</span></p>
         <p><span class="zoom">scroll</span></p>
         <p><span class="zoom">your</span></p>
@@ -72,14 +78,14 @@
             })
             Zoomerang
                 .config({
-                    maxHeight: 400,
-                    maxWidth: 400,
+                    maxHeight: window.screen.height,
+                    maxWidth: window.screen.width,
                     bgColor: '#000',
                     bgOpacity: .85,
-                    onOpen: openCallback,
-                    onClose: closeCallback,
-                    onBeforeOpen: beforeOpenCallback,
-                    onBeforeClose: beforeCloseCallback
+                    // onOpen: openCallback,
+                    // onClose: closeCallback,
+                    // onBeforeOpen: beforeOpenCallback,
+                    // onBeforeClose: beforeCloseCallback
                 })
                 .listen('.zoom')
 
