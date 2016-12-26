@@ -205,7 +205,6 @@
             dx = options.width/2;
             dy = options.height/2;
 
-            console.log(width, height);
             // top = options.maxHeight/2 - height/2;
             scale =1;
 
@@ -296,7 +295,7 @@
             overlay.style.opacity = 0
             setStyle(target, {
                 // transform: 'translate(' + dx + 'px, ' + dy + 'px)'
-                transform: 'scale(0.5)'
+                transform: 'scale(0.6)'
             })
 
             target.addEventListener(transEndEvent, function onEnd () {
